@@ -1,0 +1,27 @@
+{
+  "name": "fast-levenshtein",
+  "version": "1.0.0",
+  "description": "Efficient implementation of Levenshtein algorithm with asynchronous callback support",
+  "main": "levenshtein.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "chai": "~1.5.0",
+    "mocha": "~1.9.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hiddentao/fast-levenshtein.git"
+  },
+  "keywords": [
+    "levenshtein",
+    "distance",
+    "string"
+  ],
+  "author": "Ramesh Nair <ram@hiddentao.com> (http://www.hiddentao.com/)",
+  "license": "BSD"
+}
