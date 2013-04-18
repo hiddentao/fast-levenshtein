@@ -2,11 +2,12 @@
 
 [![Build Status](https://secure.travis-ci.org/hiddentao/fast-levenshtein.png)](http://travis-ci.org/hiddentao/fast-levenshtein)
 
-An efficient Javascript implementation of the [Levenshtein algorithm](http://rosettacode.org/wiki/Levenshtein_distance) with asynchronous callback support.
+An efficient Javascript implementation of the [Levenshtein algorithm](http://en.wikipedia.org/wiki/Levenshtein_distance) with asynchronous callback support.
 
 ## Features
 
 * Works in node.js and in the browser.
+* Reduced memory usage compared to other implemenations by not needing to store the whole matrix ([more info](http://www.codeproject.com/Articles/13525/Fast-memory-efficient-Levenshtein-algorithm)).
 * Provides synchronous and asynchronous versions of the algorithm.
 * Asynchronous version is almost as fast as the synchronous version for small strings and can also provide progress updates.
 * Comprehensive test suite.
