@@ -15,9 +15,6 @@
     "grunt-contrib-jshint": "~0.4.3",
     "grunt-mocha-test": "~0.2.2"
   },
-  "scripts": {
-    "test": "mocha"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/hiddentao/fast-levenshtein.git"
