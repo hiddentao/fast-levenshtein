@@ -7,7 +7,7 @@ An efficient Javascript implementation of the [Levenshtein algorithm](http://en.
 ## Features
 
 * Works in node.js and in the browser.
-* Reduced memory usage compared to other implemenations by not needing to store the whole matrix ([more info](http://www.codeproject.com/Articles/13525/Fast-memory-efficient-Levenshtein-algorithm)).
+* Reduced memory usage compared to other implementations by not needing to store the whole matrix ([more info](http://www.codeproject.com/Articles/13525/Fast-memory-efficient-Levenshtein-algorithm)).
 * Provides synchronous and asynchronous versions of the algorithm.
 * Asynchronous version is almost as fast as the synchronous version for small strings and can also provide progress updates.
 * Comprehensive test suite.
