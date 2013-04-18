@@ -68,7 +68,7 @@ To build the code simply run [grunt](http://gruntjs.com/):
 
     $ grunt
 
-This will run the tests followed by [jshint](jshint.com) followed by [uglify](https://github.com/mishoo/UglifyJS). To run the tests on their own do:
+This will run the tests followed by [jshint](http://jshint.com) followed by [uglify](https://github.com/mishoo/UglifyJS). To run the tests on their own do:
 
     $ grunt mochaTest
 
