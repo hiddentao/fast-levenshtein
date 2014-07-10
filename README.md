@@ -31,13 +31,7 @@ Using bower:
 $ bower install fast-levenshtein
 ```
 
-Or the following inside your HTML:
-
-```html
-<script type="text/javascript" src="https://github.com/hiddentao/fast-levenshtein/raw/master/levenshtein.min.js"></script>
-```
-
-The API will then be accessible via the `window.Levenshtein` object.
+If you are not using any module loader system then the API will then be accessible via the `window.Levenshtein` object.
 
 ## Examples
 
