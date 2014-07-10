@@ -1,7 +1,7 @@
 var _ = require('lodash'),
     chai = require('chai'),
     fs = require('fs'),
-    levenshtein = require('../levenshtein');
+    levenshtein = require('../levenshtein.min');
 
 var expect = chai.expect,
     assert = chai.assert;

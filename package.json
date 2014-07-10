@@ -4,7 +4,7 @@
   "description": "Efficient implementation of Levenshtein algorithm with asynchronous callback support",
   "main": "levenshtein.js",
   "scripts": {
-    "test": "grunt mochaTest"
+    "build": "grunt build"
   },
   "devDependencies": {
     "lodash": "~1.2.0",
