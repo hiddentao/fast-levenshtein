@@ -19,17 +19,23 @@ An efficient Javascript implementation of the [Levenshtein algorithm](http://en.
 
 Install using [npm](http://npmjs.org/):
 
-    $ npm install fast-levenshtein
+```bash
+$ npm install fast-levenshtein
+```
 
 ### Browser
 
 Using bower:
 
-    $ bower install fast-levenshtein
+```bash
+$ bower install fast-levenshtein
+```
 
 Or the following inside your HTML:
 
-    <script type="text/javascript" src="https://github.com/hiddentao/fast-levenshtein/raw/master/levenshtein.min.js"></script>
+```html
+<script type="text/javascript" src="https://github.com/hiddentao/fast-levenshtein/raw/master/levenshtein.min.js"></script>
+```
 
 The API will then be accessible via the `window.Levenshtein` object.
 
@@ -37,44 +43,50 @@ The API will then be accessible via the `window.Levenshtein` object.
 
 **Synchronous**
 
-    var levenshtein = require('fast-levenshtein');
+```javascript
+var levenshtein = require('fast-levenshtein');
 
-    var distance = levenshtein.get('back', 'book');   // 2
-    var distance = levenshtein.get('我愛你', '我叫你');   // 1
-
+var distance = levenshtein.get('back', 'book');   // 2
+var distance = levenshtein.get('我愛你', '我叫你');   // 1
+```
 
 **Asynchronous**
 
-    var levenshtein = require('fast-levenshtein');
+```javascript
+var levenshtein = require('fast-levenshtein');
 
-    levenshtein.getAsync('back', 'book', function (err, distance) {
-      // err is null unless an error was thrown
-      // distance equals 2
-    });
+levenshtein.getAsync('back', 'book', function (err, distance) {
+  // err is null unless an error was thrown
+  // distance equals 2
+});
+```
 
 **Asynchronous with progress updates**
 
-    var levenshtein = require('fast-levenshtein');
+```javascript
+var levenshtein = require('fast-levenshtein');
 
-    var hugeText1 = fs.readFileSync(...);
-    var hugeText2 = fs.readFileSync(...);
+var hugeText1 = fs.readFileSync(...);
+var hugeText2 = fs.readFileSync(...);
 
-    levenshtein.getAsync(hugeText1, hugeText2, function (err, distance) {
-      // process the results as normal
-    }, {
-      progress: function(percentComplete) {
-        console.log(percentComplete + ' % completed so far...');
-      }
-    );
+levenshtein.getAsync(hugeText1, hugeText2, function (err, distance) {
+  // process the results as normal
+}, {
+  progress: function(percentComplete) {
+    console.log(percentComplete + ' % completed so far...');
+  }
+);
+```
 
 ## Building and Testing
 
 To build the code and run the tests:
 
-    $ npm install -g grunt-cli
-    $ npm install
-    $ npm run build
-
+```bash
+$ npm install -g grunt-cli
+$ npm install
+$ npm run build
+```
 
 ## Performance
 
@@ -94,9 +106,11 @@ Fastest test is fast-levenshtein at 1.13x faster than levenshtein-edit-distance
 
 You can run this benchmark yourself using:
 
-    $ npm install -g grunt-cli
-    $ npm install
-    $ npm run benchmark
+```bash
+$ npm install -g grunt-cli
+$ npm install
+$ npm run benchmark
+```
 
 ## Contributing
 
