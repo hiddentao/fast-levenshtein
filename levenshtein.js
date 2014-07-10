@@ -40,7 +40,7 @@
 
       // two rows
       var prevRow  = new Array(str2.length + 1),
-          curCol, nextCol, i, j;
+          curCol, nextCol, i, j, tmp;
 
       // initialise previous row
       for (i=0; i<prevRow.length; ++i) {
@@ -57,12 +57,14 @@
           // substution
           nextCol = prevRow[j] + ( (str1.charAt(i) === str2.charAt(j)) ? 0 : 1 );
           // insertion
-          if (nextCol > curCol + 1) {
-            nextCol = curCol + 1;
+          tmp = curCol + 1;
+          if (nextCol > tmp) {
+            nextCol = tmp;
           }
           // deletion
-          else if (nextCol > prevRow[j + 1] + 1) {
-            nextCol = prevRow[j + 1] + 1;
+          tmp = prevRow[j + 1] + 1;
+          if (nextCol > tmp) {
+            nextCol = tmp;
           }
 
           // copy current col value into previous (in preparation for next iteration)
@@ -98,7 +100,8 @@
       // two rows
       var prevRow  = new Array(str2.length + 1),
           curCol, nextCol,
-          i, j, startTime, currentTime;
+          i, j, tmp,
+          startTime, currentTime;
 
       // initialise previous row
       for (i=0; i<prevRow.length; ++i) {
@@ -138,12 +141,14 @@
           // substution
           nextCol = prevRow[j] + ( (str1.charAt(i) === str2.charAt(j)) ? 0 : 1 );
           // insertion
-          if (nextCol > curCol + 1) {
-            nextCol = curCol + 1;
+          tmp = curCol + 1;
+          if (nextCol > tmp) {
+            nextCol = tmp;
           }
           // deletion
-          else if (nextCol > prevRow[j + 1] + 1) {
-            nextCol = prevRow[j + 1] + 1;
+          tmp = prevRow[j + 1] + 1;
+          if (nextCol > tmp) {
+            nextCol = tmp;
           }
 
           // copy current into previous (in preparation for next iteration)

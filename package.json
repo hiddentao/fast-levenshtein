@@ -1,6 +1,6 @@
 {
   "name": "fast-levenshtein",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Efficient implementation of Levenshtein algorithm with asynchronous callback support",
   "main": "levenshtein.js",
   "scripts": {

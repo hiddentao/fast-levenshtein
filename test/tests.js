@@ -66,6 +66,7 @@ var createTests = function(str1, str2, expectedLength, options) {
   _.extend(tests, createTests('Hello', 'hello', 1));
   _.extend(tests, createTests('book', 'back', 2));
   _.extend(tests, createTests('kitten', 'sitting', 3));
+  _.extend(tests, createTests('kitten', 'kttn', 2));
 
   _.extend(tests, createTests('因為我是中國人所以我會說中文', '因為我是英國人所以我會說英文', 2, {
     description: 'non-latin'

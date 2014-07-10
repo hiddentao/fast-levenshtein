@@ -96,14 +96,14 @@ Benchmarked against other node.js levenshtein distance modules (on Macbook Air 2
 
 ```bash
 Running suite Implementation comparison [benchmark/speed.js]...
->> levenshtein-edit-distance x 385 ops/sec ±3.14% (87 runs sampled)
->> levenshtein-component x 369 ops/sec ±5.41% (72 runs sampled)
->> levenshtein-deltas x 216 ops/sec ±4.95% (65 runs sampled)
->> natural x 260 ops/sec ±1.57% (91 runs sampled)
->> levenshtein x 178 ops/sec ±2.17% (78 runs sampled)
->> fast-levenshtein x 1,985 ops/sec ±0.47% (100 runs sampled)
+>> levenshtein-edit-distance x 234 ops/sec ±3.02% (73 runs sampled)
+>> levenshtein-component x 422 ops/sec ±4.38% (83 runs sampled)
+>> levenshtein-deltas x 283 ops/sec ±3.83% (78 runs sampled)
+>> natural x 255 ops/sec ±0.76% (88 runs sampled)
+>> levenshtein x 180 ops/sec ±3.55% (86 runs sampled)
+>> fast-levenshtein x 1,792 ops/sec ±2.72% (95 runs sampled)
 Benchmark done.
-Fastest test is fast-levenshtein at 5.4x faster than levenshtein-component and levenshtein-edit-distance
+Fastest test is fast-levenshtein at 4.2x faster than levenshtein-component
 ```
 
 You can run this benchmark yourself by doing:
