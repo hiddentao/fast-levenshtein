@@ -6,7 +6,7 @@
     "Ramesh Nair <ram@hiddentao.com>"
   ],
   "description": "Efficient implementation of Levenshtein algorithm with asynchronous callback support",
-  "main": "levenshtein.min.js",
+  "main": "levenshtein.js",
   "moduleType": [
     "amd",
     "globals",
