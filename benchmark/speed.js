@@ -1,6 +1,8 @@
-var fastLevenshtein = require('../Levenshtein.min').get,
+var fastLevenshtein = require('../levenshtein.min').get,
   levenshtein = require('levenshtein'),
   levenshteinEditDistance = require('levenshtein-edit-distance'),
+  levenshteinComponent = require('levenshtein-component'),
+  levenshteinDeltas = require('levenshtein-deltas'),
   natural = require('natural').LevenshteinDistance;
 
 
@@ -137,15 +139,23 @@ module.exports = {
   },
   tests: [
     {
-      name: 'fast-levenshtein',
-      fn: function() {
-        loop(fastLevenshtein);
-      }
-    },
-    {
       name: 'levenshtein-edit-distance',
       fn: function() {
         loop(levenshteinEditDistance);
+      }
+    },
+    {
+      name: 'levenshtein-component',
+      fn: function() {
+        loop(levenshteinComponent);
+      }
+    },
+    {
+      name: 'levenshtein-deltas',
+      fn: function() {
+        loop(function(v1,v2) {
+            return new levenshteinDeltas.Lev(v1,v2).distance();
+        });
       }
     },
     {
@@ -158,6 +168,12 @@ module.exports = {
       name: 'levenshtein',
       fn: function() {
         loop(levenshtein);
+      }
+    },
+    {
+      name: 'fast-levenshtein',
+      fn: function() {
+        loop(fastLevenshtein);
       }
     },
   ]

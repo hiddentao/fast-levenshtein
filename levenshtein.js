@@ -39,12 +39,12 @@
       if (str2.length === 0) return str1.length;
 
       // two rows
-      var previous  = new Array(str2.length + 1),
+      var prevRow  = new Array(str2.length + 1),
           curCol, nextCol, i, j;
 
       // initialise previous row
-      for (i=0; i<previous.length; ++i) {
-        previous[i] = i;
+      for (i=0; i<prevRow.length; ++i) {
+        prevRow[i] = i;
       }
 
       // calculate current row distance from previous row
@@ -54,18 +54,23 @@
         for (j=0; j<str2.length; ++j) {
           curCol = nextCol;
 
-          nextCol = Math.min(
-            previous[j] + ( (str1.charAt(i) === str2.charAt(j)) ? 0 : 1 ),    // substitution
-            curCol + 1,           // insertion
-            previous[j + 1] + 1   // deletion
-          );
+          // substution
+          nextCol = prevRow[j] + ( (str1.charAt(i) === str2.charAt(j)) ? 0 : 1 );
+          // insertion
+          if (nextCol > curCol + 1) {
+            nextCol = curCol + 1;
+          }
+          // deletion
+          else if (nextCol > prevRow[j + 1] + 1) {
+            nextCol = prevRow[j + 1] + 1;
+          }
 
           // copy current col value into previous (in preparation for next iteration)
-          previous[j] = curCol;
+          prevRow[j] = curCol;
         }
 
         // copy last col value into previous (in preparation for next iteration)
-        previous[j] = nextCol;
+        prevRow[j] = nextCol;
       }
 
       return nextCol;
@@ -129,11 +134,17 @@
 
           // calculation
           curCol = nextCol;
-          nextCol = Math.min(
-              prevRow[j] + ( (str1.charAt(i) === str2.charAt(j)) ? 0 : 1 ),    // substitution
-              curCol + 1,    // insertion
-              prevRow[j + 1] + 1 // deletion
-          );
+
+          // substution
+          nextCol = prevRow[j] + ( (str1.charAt(i) === str2.charAt(j)) ? 0 : 1 );
+          // insertion
+          if (nextCol > curCol + 1) {
+            nextCol = curCol + 1;
+          }
+          // deletion
+          else if (nextCol > prevRow[j + 1] + 1) {
+            nextCol = prevRow[j + 1] + 1;
+          }
 
           // copy current into previous (in preparation for next iteration)
           prevRow[j] = curCol;

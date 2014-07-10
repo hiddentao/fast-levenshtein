@@ -7,10 +7,10 @@ An efficient Javascript implementation of the [Levenshtein algorithm](http://en.
 ## Features
 
 * Works in node.js and in the browser.
-* Reduced memory usage compared to other implementations by not needing to store the whole matrix ([more info](http://www.codeproject.com/Articles/13525/Fast-memory-efficient-Levenshtein-algorithm)).
+* Better performance than other implementations by not needing to store the whole matrix ([more info](http://www.codeproject.com/Articles/13525/Fast-memory-efficient-Levenshtein-algorithm)).
 * Provides synchronous and asynchronous versions of the algorithm.
 * Asynchronous version is almost as fast as the synchronous version for small strings and can also provide progress updates.
-* Comprehensive test suite.
+* Comprehensive test suite and performance benchmark.
 * Small: <1 KB minified and gzipped
 
 ## Installation
@@ -96,19 +96,22 @@ Benchmarked against other node.js levenshtein distance modules (on Macbook Air 2
 
 ```bash
 Running suite Implementation comparison [benchmark/speed.js]...
->> fast-levenshtein x 357 ops/sec ±2.32% (89 runs sampled)
->> levenshtein-edit-distance x 317 ops/sec ±4.16% (83 runs sampled)
->> natural x 219 ops/sec ±5.26% (77 runs sampled)
->> levenshtein x 179 ops/sec ±2.49% (73 runs sampled)
+>> levenshtein-edit-distance x 385 ops/sec ±3.14% (87 runs sampled)
+>> levenshtein-component x 369 ops/sec ±5.41% (72 runs sampled)
+>> levenshtein-deltas x 216 ops/sec ±4.95% (65 runs sampled)
+>> natural x 260 ops/sec ±1.57% (91 runs sampled)
+>> levenshtein x 178 ops/sec ±2.17% (78 runs sampled)
+>> fast-levenshtein x 1,985 ops/sec ±0.47% (100 runs sampled)
 Benchmark done.
-Fastest test is fast-levenshtein at 1.13x faster than levenshtein-edit-distance
+Fastest test is fast-levenshtein at 5.4x faster than levenshtein-component and levenshtein-edit-distance
 ```
 
-You can run this benchmark yourself using:
+You can run this benchmark yourself by doing:
 
 ```bash
 $ npm install -g grunt-cli
 $ npm install
+$ npm run build
 $ npm run benchmark
 ```
 

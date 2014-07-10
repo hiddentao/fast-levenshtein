@@ -74,7 +74,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['build']);
 
-  grunt.registerTask('benchmark', ['npm-install:levenshtein-edit-distance:levenshtein:natural', 'benchmarkConfig']);
+  grunt.registerTask('benchmark', ['npm-install:levenshtein-edit-distance:levenshtein:natural:levenshtein-component:levenshtein-deltas', 'benchmarkConfig']);
 };
 
 
