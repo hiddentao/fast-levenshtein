@@ -23,7 +23,11 @@ Install using [npm](http://npmjs.org/):
 
 ### Browser
 
-Add the following inside your HTML:
+Using bower:
+
+    $ bower install fast-levenshtein
+
+Or the following inside your HTML:
 
     <script type="text/javascript" src="https://github.com/hiddentao/fast-levenshtein/raw/master/levenshtein.min.js"></script>
 
@@ -78,34 +82,8 @@ This will run the tests followed by [jshint](http://jshint.com) followed by [ugl
 
 If you wish to submit a pull request please update and/or create new tests for any changes you make and ensure the grunt build passes.
 
----
+See [CONTRIBUTING.md](https://github.com/hiddentao/fast-levenshtein/blob/master/CONTRIBUTING.md) for details.
 
-Homepage: [https://github.com/hiddentao/fast-levenshtein](https://github.com/hiddentao/fast-levenshtein)
+## License
 
-
-Copyright (c) 2013 [Ramesh Nair](http://www.hiddentao.com/)
-
-Permission is hereby granted, free of charge, to any person
-obtaining a copy of this software and associated documentation
-files (the "Software"), to deal in the Software without
-restriction, including without limitation the rights to use,
-copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the
-Software is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
-
-
-
+MIT - see [LICENSE.md](https://github.com/hiddentao/fast-levenshtein/blob/master/LICENSE.md)

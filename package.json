@@ -1,10 +1,10 @@
 {
   "name": "fast-levenshtein",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Efficient implementation of Levenshtein algorithm with asynchronous callback support",
   "main": "levenshtein.js",
-  "directories": {
-    "test": "test"
+  "scripts": {
+    "test": "grunt mochaTest"
   },
   "devDependencies": {
     "lodash": "~1.2.0",
