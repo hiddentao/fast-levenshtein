@@ -58,15 +58,23 @@ module.exports = function(grunt) {
         src: 'levenshtein.js',
         dest: 'levenshtein.min.js'
       }
-    }
+    },
+
+    benchmarkConfig: {
+      speed: {
+        src: ['benchmark/speed.js']
+      }
+    },
   });
 
-
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-mocha-test');
+  require('load-grunt-tasks')(grunt);
+  grunt.renameTask('benchmark', 'benchmarkConfig');
 
   grunt.registerTask('build', ['jshint', 'uglify', 'mochaTest']);
 
   grunt.registerTask('default', ['build']);
+
+  grunt.registerTask('benchmark', ['npm-install:levenshtein-edit-distance:levenshtein:natural', 'benchmarkConfig']);
 };
+
+

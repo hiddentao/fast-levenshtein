@@ -4,7 +4,8 @@
   "description": "Efficient implementation of Levenshtein algorithm with asynchronous callback support",
   "main": "levenshtein.js",
   "scripts": {
-    "build": "grunt build"
+    "build": "grunt build",
+    "benchmark": "grunt benchmark"
   },
   "devDependencies": {
     "lodash": "~1.2.0",
@@ -13,7 +14,10 @@
     "grunt-contrib-uglify": "~0.2.0",
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.4.3",
-    "grunt-mocha-test": "~0.2.2"
+    "grunt-mocha-test": "~0.2.2",
+    "grunt-npm-install": "~0.1.0",
+    "load-grunt-tasks": "~0.6.0",
+    "grunt-benchmark": "~0.2.0"
   },
   "repository": {
     "type": "git",

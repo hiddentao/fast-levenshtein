@@ -69,14 +69,34 @@ The API will then be accessible via the `window.Levenshtein` object.
 
 ## Building and Testing
 
-To build the code simply run [grunt](http://gruntjs.com/):
+To build the code and run the tests:
 
-    $ grunt
+    $ npm install -g grunt-cli
+    $ npm install
+    $ npm run build
 
-This will run the tests followed by [jshint](http://jshint.com) followed by [uglify](https://github.com/mishoo/UglifyJS). To run the tests on their own do:
 
-    $ grunt mochaTest
+## Performance
 
+_Thanks to [Titus Wormer](https://github.com/wooorm) for [encouraging me](https://github.com/hiddentao/fast-levenshtein/issues/1) to do this._
+
+Benchmarked against other node.js levenshtein distance modules (on Macbook Air 2012, Core i7, 8GB RAM):
+
+```bash
+Running suite Implementation comparison [benchmark/speed.js]...
+>> fast-levenshtein x 357 ops/sec ±2.32% (89 runs sampled)
+>> levenshtein-edit-distance x 317 ops/sec ±4.16% (83 runs sampled)
+>> natural x 219 ops/sec ±5.26% (77 runs sampled)
+>> levenshtein x 179 ops/sec ±2.49% (73 runs sampled)
+Benchmark done.
+Fastest test is fast-levenshtein at 1.13x faster than levenshtein-edit-distance
+```
+
+You can run this benchmark yourself using:
+
+    $ npm install -g grunt-cli
+    $ npm install
+    $ npm run benchmark
 
 ## Contributing
 

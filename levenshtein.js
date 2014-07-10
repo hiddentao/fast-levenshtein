@@ -40,8 +40,7 @@
 
       // two rows
       var previous  = new Array(str2.length + 1),
-          current = new Array(str2.length + 1),
-          i, j;
+          curCol, nextCol, i, j;
 
       // initialise previous row
       for (i=0; i<previous.length; ++i) {
@@ -50,24 +49,26 @@
 
       // calculate current row distance from previous row
       for (i=0; i<str1.length; ++i) {
-        current[0] = i + 1;
+        nextCol = i + 1;
 
         for (j=0; j<str2.length; ++j) {
-          current[j + 1] = Math.min(
-              previous[j] + ( (str1.charAt(i) === str2.charAt(j)) ? 0 : 1 ),    // substitution
-              current[j] + 1,    // insertion
-              previous[j + 1] + 1 // deletion
+          curCol = nextCol;
+
+          nextCol = Math.min(
+            previous[j] + ( (str1.charAt(i) === str2.charAt(j)) ? 0 : 1 ),    // substitution
+            curCol + 1,           // insertion
+            previous[j + 1] + 1   // deletion
           );
 
-          // copy current into previous (in preparation for next iteration)
-          previous[j] = current[j];
+          // copy current col value into previous (in preparation for next iteration)
+          previous[j] = curCol;
         }
 
-        // copy current into previous (in preparation for next iteration)
-        previous[j] = current[j];
+        // copy last col value into previous (in preparation for next iteration)
+        previous[j] = nextCol;
       }
 
-      return current[str2.length];
+      return nextCol;
     },
 
     /**
@@ -90,17 +91,16 @@
       if (str2.length === 0) return cb(null, str1.length);
 
       // two rows
-      var previous  = new Array(str2.length + 1),
-          current = new Array(str2.length + 1),
+      var prevRow  = new Array(str2.length + 1),
+          curCol, nextCol,
           i, j, startTime, currentTime;
 
       // initialise previous row
-      for (i=0; i<previous.length; ++i) {
-        previous[i] = i;
+      for (i=0; i<prevRow.length; ++i) {
+        prevRow[i] = i;
       }
 
-      current[0] = 1;
-
+      nextCol = 1;
       i = 0;
       j = -1;
 
@@ -114,28 +114,29 @@
           // reached end of current row?
           if (str2.length <= (++j)) {
             // copy current into previous (in preparation for next iteration)
-            previous[j] = current[j];
+            prevRow[j] = nextCol;
 
             // if already done all chars
             if (str1.length <= (++i)) {
-              return cb(null, current[str2.length]);
+              return cb(null, nextCol);
             }
             // else if we have more left to do
             else {
-              current[0] = i + 1;
+              nextCol = i + 1;
               j = 0;
             }
           }
 
           // calculation
-          current[j + 1] = Math.min(
-              previous[j] + ( (str1.charAt(i) === str2.charAt(j)) ? 0 : 1 ),    // substitution
-              current[j] + 1,    // insertion
-              previous[j + 1] + 1 // deletion
+          curCol = nextCol;
+          nextCol = Math.min(
+              prevRow[j] + ( (str1.charAt(i) === str2.charAt(j)) ? 0 : 1 ),    // substitution
+              curCol + 1,    // insertion
+              prevRow[j + 1] + 1 // deletion
           );
 
           // copy current into previous (in preparation for next iteration)
-          previous[j] = current[j];
+          prevRow[j] = curCol;
 
           // get current time
           currentTime = new Date().valueOf();
