@@ -49,6 +49,10 @@ var createTests = function(str1, str2, expectedLength, options) {
       str2 = str,
       i;
 
+  // equal strings
+  _.extend(tests, createTests('hello', 'hello', 0));
+
+  // inserts
   for (i=0; i<=str.length; ++i) {
     str1 = str.substr(0,i);
     str2 = str;
@@ -56,6 +60,7 @@ var createTests = function(str1, str2, expectedLength, options) {
     _.extend(tests, createTests(str1, str2, str.length - i));
   }
 
+  // deletes
   for (i=str.length-1; i>=0; --i) {
     str1 = str;
     str2 = str.substr(0,i);
@@ -63,21 +68,33 @@ var createTests = function(str1, str2, expectedLength, options) {
     _.extend(tests, createTests(str1, str2, str.length - i));
   }
 
-  _.extend(tests, createTests('Hello', 'hello', 1));
-  _.extend(tests, createTests('book', 'back', 2));
-  _.extend(tests, createTests('kitten', 'sitting', 3));
-  _.extend(tests, createTests('kitten', 'kttn', 2));
+  // substitutions
+  _.extend(tests, createTests("a",   "b", 1 ));
+  _.extend(tests, createTests("ab",  "ac", 1 ));
+  _.extend(tests, createTests("ac",  "bc",  1 ));
+  _.extend(tests, createTests("abc", "axc", 1 ));
+  _.extend(tests, createTests("xabxcdxxefxgx", "1ab2cd34ef5g6", 6 ));
 
+  // many ops
+  _.extend(tests, createTests('xabxcdxxefxgx', 'abcdefg', 6));
+  _.extend(tests, createTests('javawasneat', 'scalaisgreat', 7));
+  _.extend(tests, createTests("example", "samples", 3));
+  _.extend(tests, createTests("sturgeon", "urgently", 6 ));
+  _.extend(tests, createTests("levenshtein", "frankenstein", 6 ));
+  _.extend(tests, createTests("distance", "difference", 5 ));
+
+  // non-latin
   _.extend(tests, createTests('因為我是中國人所以我會說中文', '因為我是英國人所以我會說英文', 2, {
     description: 'non-latin'
   }));
 
+  // long text
   _.extend(tests, createTests(
       'Morbi interdum ultricies neque varius condimentum. Donec volutpat turpis interdum metus ultricies vulputate. Duis ultricies rhoncus sapien, sit amet fermentum risus imperdiet vitae. Ut et lectus',
       'Duis erat dolor, cursus in tincidunt a, lobortis in odio. Cras magna sem, pharetra et iaculis quis, faucibus quis tellus. Suspendisse dapibus sapien in justo cursus',
       143,
       {
-        description: 'sentence'
+        description: 'long text'
       }
   ));
 
