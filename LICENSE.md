@@ -1,3 +1,5 @@
+(MIT License)
+
 Copyright (c) 2013 [Ramesh Nair](http://www.hiddentao.com/)
 
 Permission is hereby granted, free of charge, to any person
