@@ -177,7 +177,7 @@
   };
 
   if(typeof self !== "undefined"){
-	self.Levenshtein = Levenshtein;
+    self.Levenshtein = Levenshtein;
   }
   else if (typeof define !== "undefined" && define !== null && define.amd) {
     define(function() {

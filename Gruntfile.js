@@ -42,6 +42,7 @@ module.exports = function(grunt) {
 
         "browser": true,
         "node": true,
+		"worker": true,
 
         "predef": [
             'define', 'require'
