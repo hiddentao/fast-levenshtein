@@ -176,19 +176,23 @@
 
   };
 
-  if(typeof self !== "undefined"){
-    self.Levenshtein = Levenshtein;
-  }
-  else if (typeof define !== "undefined" && define !== null && define.amd) {
+  // amd
+  if (typeof define !== "undefined" && define !== null && define.amd) {
     define(function() {
       return Levenshtein;
     });
-  } else if (typeof module !== "undefined" && module !== null) {
+  }
+  // commonjs
+  else if (typeof module !== "undefined" && module !== null) {
     module.exports = Levenshtein;
-  } else {
-    if (typeof window !== "undefined" && window !== null) {
-      window.Levenshtein = Levenshtein;
-    }
+  }
+  // web worker
+  else if (typeof self !== "undefined" && typeof self.postMessage === 'function' && typeof self.importScripts === 'function') {
+    self.Levenshtein = Levenshtein;
+  }
+  // browser main thread
+  else if (typeof window !== "undefined" && window !== null) {
+    window.Levenshtein = Levenshtein;
   }
 }());
 
