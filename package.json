@@ -3,6 +3,9 @@
   "version": "1.0.6",
   "description": "Efficient implementation of Levenshtein algorithm with asynchronous callback support",
   "main": "levenshtein.js",
+  "files": [
+    "levenshtein.js"
+  ],
   "scripts": {
     "build": "grunt build",
     "benchmark": "grunt benchmark"
