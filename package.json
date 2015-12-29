@@ -8,10 +8,11 @@
   ],
   "scripts": {
     "build": "grunt build",
-    "benchmark": "grunt benchmark"
+    "benchmark": "grunt benchmark",
+    "test": "mocha"
   },
   "devDependencies": {
-    "lodash": "~1.2.0",
+    "lodash": ">=3.0.0",
     "chai": "~1.5.0",
     "mocha": "~1.9.0",
     "grunt-contrib-uglify": "~0.2.0",
