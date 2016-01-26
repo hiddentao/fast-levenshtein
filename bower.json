@@ -1,6 +1,6 @@
 {
   "name": "fast-levenshtein",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "homepage": "https://github.com/hiddentao/fast-levenshtein",
   "authors": [
     "Ramesh Nair <ram@hiddentao.com>"
