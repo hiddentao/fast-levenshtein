@@ -27,10 +27,10 @@
    * @param  {Function} func
    */
   var _defer = function(func) {
-    if (typeof process !== 'undefined' && process.nextTick) {
-      return process.nextTick(func);
+    if (typeof setImmediate === 'function') {
+      return setImmediate(func);
     } else {
-      return window.setTimeout(func, 0);
+      return setTimeout(func, 0);
     }
   };
 

@@ -42,10 +42,9 @@ module.exports = function(grunt) {
 
         "browser": true,
         "node": true,
-		"worker": true,
-
+    		"worker": true,
         "predef": [
-            'define', 'require'
+            'define', 'require', 'setImmediate'
         ]
       },
       files: ['levenshtein.js']
