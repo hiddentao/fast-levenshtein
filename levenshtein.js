@@ -21,6 +21,19 @@
     return dst;
   };
 
+
+  /**
+   * Defer execution of given function.
+   * @param  {Function} func
+   */
+  var _defer = function(func) {
+    if (typeof process !== 'undefined' && process.nextTick) {
+      return process.nextTick(func);
+    } else {
+      return window.setTimeout(func, 0);
+    }
+  };
+
   /**
    * Based on the algorithm at http://en.wikipedia.org/wiki/Levenshtein_distance.
    */
@@ -168,7 +181,7 @@
         }
 
         // next iteration
-        setTimeout(__calculate(), 0);
+        _defer(__calculate);
       };
 
       __calculate();
