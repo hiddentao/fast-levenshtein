@@ -32,7 +32,7 @@ module.exports = function(grunt) {
         "undef": true,
         "unused": true,
         "strict": true,
-        "trailing": true,
+        "trailing": false,
 
         "boss": true,
         "laxcomma": true,
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
         "node": true,
     		"worker": true,
         "predef": [
-            'define', 'require', 'setImmediate'
+            'define', 'require', 'setImmediate', 'Intl'
         ]
       },
       files: ['levenshtein.js']

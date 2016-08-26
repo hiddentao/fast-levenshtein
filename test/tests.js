@@ -22,17 +22,8 @@ var createTests = function(str1, str2, expectedLength, options) {
 
   var ret = {};
 
-  ret["SYNC:\t" + options.description] = function() {
-    expect(levenshtein.get(str1, str2)).to.eql(expectedLength);
-  };
-
-  ret["ASYNC:\t" + options.description] = function(done) {
-    levenshtein.getAsync(str1, str2, function(err, distance) {
-      expect(err).to.be.null;
-      expect(distance).to.eql(expectedLength);
-
-      done();
-    });
+  ret[options.description + ' (len: ' + expectedLength + ')'] = function() {
+    expect(levenshtein.get(str1, str2, options)).to.eql(expectedLength);
   };
 
   return ret;
@@ -79,13 +70,27 @@ var createTests = function(str1, str2, expectedLength, options) {
   _.extend(tests, createTests('xabxcdxxefxgx', 'abcdefg', 6));
   _.extend(tests, createTests('javawasneat', 'scalaisgreat', 7));
   _.extend(tests, createTests("example", "samples", 3));
+  _.extend(tests, createTests("forward", "drawrof", 6));
   _.extend(tests, createTests("sturgeon", "urgently", 6 ));
   _.extend(tests, createTests("levenshtein", "frankenstein", 6 ));
   _.extend(tests, createTests("distance", "difference", 5 ));
+  _.extend(tests, createTests("distance", "eistancd", 2 ));
 
   // non-latin
+  _.extend(tests, createTests('你好世界', '你好', 2, {
+    description: 'non-latin'
+  }));
   _.extend(tests, createTests('因為我是中國人所以我會說中文', '因為我是英國人所以我會說英文', 2, {
     description: 'non-latin'
+  }));
+
+  // collation (see https://github.com/hiddentao/fast-levenshtein/issues/7)
+  _.extend(tests, createTests('mikailovitch', 'Mikhaïlovitch', 3, {
+    description: 'collator OFF'
+  }));
+  _.extend(tests, createTests('mikailovitch', 'Mikhaïlovitch', 1, {
+    useCollator: true,
+    description: 'collator ON'
   }));
 
   // long text
@@ -101,71 +106,22 @@ var createTests = function(str1, str2, expectedLength, options) {
   exports['Basic'] = tests;
 })();
 
-// ------ Asynchronous tests ----- //
+// ------ Huge tests ----- //
 
 var text1 = fs.readFileSync(__dirname + '/text1.txt', 'utf-8'),
     text2 = fs.readFileSync(__dirname + '/text2.txt', 'utf-8');
 
-exports['Async'] = {
-  'no progress callback': function(done) {
-    this.timeout(20000);
-
+exports['Huge'] = {
+  'default': function() {
     var startTime = new Date().valueOf();
 
-    levenshtein.getAsync(text1, text2, function(err, distance) {
-      var timeElapsed = new Date().valueOf() - startTime;
+    var distance = levenshtein.get(text1, text2);
 
-      expect(err).to.be.null;
-      expect(distance).to.eql(194);
+    var timeElapsed = new Date().valueOf() - startTime;
 
-      console.log(timeElapsed + ' ms');
-
-      done();
-    });
+    console.log(timeElapsed + ' ms');
+    
+    expect(distance).to.eql(194);
   },
-  'with progress callback': function(done) {
-    this.timeout(20000);
-
-    var percents = [];
-    var progress = function(percent) {
-      percents.push(percent);
-    };
-
-    var startTime = new Date().valueOf();
-
-    levenshtein.getAsync(text1, text2, function(err, distance) {
-      var timeElapsed = new Date().valueOf() - startTime;
-
-      expect(err).to.be.null;
-      expect(distance).to.eql(194);
-
-      console.log(timeElapsed + ' ms, ' + percents.length + ' progress updates');
-
-      expect(0 < percents.length).to.be.true;
-
-      // check percentages
-      var lastPercent = 0;
-      _.each(percents, function(percent) {
-        expect(100 >= percent);
-        expect(percent > lastPercent);
-        lastPercent = percent;
-      });
-
-      done();
-    }, {
-      progress: progress
-    });
-  },
-  'progress callback error': function(done) {
-    levenshtein.getAsync(text1 + text2, text2 + text1, function(err) {
-      expect(err.toString()).to.be.eql('Progress callback: Error: Bla bla');
-
-      done();
-    }, {
-      progress: function() {
-        throw new Error('Bla bla');
-      }
-    });
-  }
 };
 
