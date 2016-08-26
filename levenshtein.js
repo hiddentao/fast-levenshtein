@@ -2,14 +2,12 @@
   'use strict';
   
   // language-sensitive collator
-  var collator = Intl.Collator("generic", { sensitivity: "base" });
-
+  var collator = (typeof Intl !== undefined && typeof Intl.Collator !== undefined) ? Intl.Collator("generic", { sensitivity: "base" }) : null;
 
   // arrays to re-use
   var prevRow = [],
     str2Char = [];
   
-
   /**
    * Based on the algorithm at http://en.wikipedia.org/wiki/Levenshtein_distance.
    */
@@ -20,11 +18,11 @@
      * @param str1 String the first string.
      * @param str2 String the second string.
      * @param [options] Additional options.
-     * @param [options.useCollator] Use `Intl.Collator` for more locale-sensitive string comparison.
+     * @param [options.useCollator] Use `Intl.Collator` for locale-sensitive string comparison.
      * @return Integer the levenshtein distance (0 and above).
      */
     get: function(str1, str2, options) {
-      var useCollator = (options && options.useCollator);
+      var useCollator = (options && collator && options.useCollator);
       
       var str1Len = str1.length,
         str2Len = str2.length;
