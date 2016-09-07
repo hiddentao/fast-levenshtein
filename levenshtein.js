@@ -2,7 +2,7 @@
   'use strict';
   
   // language-sensitive collator
-  var collator = (typeof Intl !== undefined && typeof Intl.Collator !== undefined) ? Intl.Collator("generic", { sensitivity: "base" }) : null;
+  var collator = (typeof Intl !== "undefined" && typeof Intl.Collator !== "undefined") ? Intl.Collator("generic", { sensitivity: "base" }) : null;
 
   // arrays to re-use
   var prevRow = [],
