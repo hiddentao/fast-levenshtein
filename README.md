@@ -88,7 +88,6 @@ Fastest test is fast-levenshtein at 4.2x faster than levenshtein-component
 You can run this benchmark yourself by doing:
 
 ```bash
-$ npm install -g grunt-cli
 $ npm install
 $ npm run build
 $ npm run benchmark
