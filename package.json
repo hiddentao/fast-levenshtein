@@ -1,6 +1,6 @@
 {
   "name": "fast-levenshtein",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Efficient implementation of Levenshtein algorithm  with locale-specific collator support.",
   "main": "levenshtein.js",
   "files": [
