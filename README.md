@@ -35,6 +35,10 @@ $ bower install fast-levenshtein
 
 If you are not using any module loader system then the API will then be accessible via the `window.Levenshtein` object.
 
+**CDN**
+
+The latest version is now also always available at https://npm-cdn.com/pkg/fast-levenshtein/ 
+
 ## Examples
 
 **Default usage**
