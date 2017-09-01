@@ -11,7 +11,7 @@ An efficient Javascript implementation of the [Levenshtein algorithm](http://en.
 
 * Works in node.js and in the browser.
 * Better performance than other implementations by not needing to store the whole matrix ([more info](http://www.codeproject.com/Articles/13525/Fast-memory-efficient-Levenshtein-algorithm)).
-* Locale-sensitive string comparisions if needed.
+* Locale-sensitive string comparisons if needed.
 * Comprehensive test suite and performance benchmark.
 * Small: <1 KB minified and gzipped
 
