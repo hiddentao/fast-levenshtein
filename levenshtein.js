@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  
+
   var collator;
   try {
     collator = (typeof Intl !== "undefined" && typeof Intl.Collator !== "undefined") ? Intl.Collator("generic", { sensitivity: "base" }) : null;
@@ -10,7 +10,7 @@
   // arrays to re-use
   var prevRow = [],
     str2Char = [];
-  
+
   /**
    * Based on the algorithm at http://en.wikipedia.org/wiki/Levenshtein_distance.
    */
@@ -26,10 +26,11 @@
      */
     get: function(str1, str2, options) {
       var useCollator = (options && collator && options.useCollator);
-      
+      var getSubCost = (options && typeof options.getSubCost === 'function' && options.getSubCost);
+
       var str1Len = str1.length,
         str2Len = str2.length;
-      
+
       // base cases
       if (str1Len === 0) return str2Len;
       if (str2Len === 0) return str1Len;
@@ -45,6 +46,7 @@
       prevRow[str2Len] = str2Len;
 
       var strCmp;
+      var substutionCost = 1;
       if (useCollator) {
         // calculate current row distance from previous row using collator
         for (i = 0; i < str1Len; ++i) {
@@ -55,8 +57,8 @@
 
             // substution
             strCmp = 0 === collator.compare(str1.charAt(i), String.fromCharCode(str2Char[j]));
-
-            nextCol = prevRow[j] + (strCmp ? 0 : 1);
+            substutionCost = (strCmp ? 0 : (getSubCost ? getSubCost(str1.charAt(i), String.fromCharCode(str2.charCodeAt(j))) : 1));
+            nextCol = prevRow[j] + substutionCost;
 
             // insertion
             tmp = curCol + 1;
@@ -87,8 +89,8 @@
 
             // substution
             strCmp = str1.charCodeAt(i) === str2Char[j];
-
-            nextCol = prevRow[j] + (strCmp ? 0 : 1);
+            substutionCost = (strCmp ? 0 : (getSubCost ? getSubCost(str1.charAt(i), str2.charAt(j), 'sub') : 1));
+            nextCol = prevRow[j] + substutionCost;
 
             // insertion
             tmp = curCol + 1;
