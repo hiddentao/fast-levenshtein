@@ -178,7 +178,6 @@ exports['Huge'] = {
     var timeElapsed = new Date().valueOf() - startTime;
 
     console.log(timeElapsed + ' ms');
-
     expect(distance).to.eql(194);
   },
 };

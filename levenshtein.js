@@ -1,6 +1,5 @@
 (function() {
   'use strict';
-
   var collator;
   try {
     collator = (typeof Intl !== "undefined" && typeof Intl.Collator !== "undefined") ? Intl.Collator("generic", { sensitivity: "base" }) : null;
@@ -10,7 +9,6 @@
   // arrays to re-use
   var prevRow = [],
     str2Char = [];
-
   /**
    * Based on the algorithm at http://en.wikipedia.org/wiki/Levenshtein_distance.
    */
