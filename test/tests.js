@@ -139,6 +139,18 @@ var createTests = function(str1, str2, expectedLength, options) {
     getSubCost,
   }));
 
+  _.extend(tests, createTests('Schmid', 'Sciimid', 1, { // SCHMID/SCIIMID
+    description: 'collator OFF',
+    useCollator: true,
+    getSubCost,
+  }));
+
+  _.extend(tests, createTests('Tariq', 'Tario', 0, { // TARIQ/TARIO
+    description: 'collator OFF',
+    useCollator: true,
+    getSubCost,
+  }));
+
    // long text
   _.extend(tests, createTests(
       'Morbi interdum ultricies neque varius condimentum. Donec volutpat turpis interdum metus ultricies vulputate. Duis ultricies rhoncus sapien, sit amet fermentum risus imperdiet vitae. Ut et lectus',
