@@ -124,31 +124,31 @@ var createTests = function(str1, str2, expectedLength, options) {
 
   _.extend(tests, createTests('apppb', 'appp8', 0, {
     description: 'collator OFF',
-    getSubCost,
+    getSubCost
   }));
 
   _.extend(tests, createTests('Pawel', 'Paweł', 0, {
     description: 'collator OFF',
     useCollator: true,
-    getSubCost,
+    getSubCost
   }));
 
   _.extend(tests, createTests('Olamide', 'Olamide', 0, {
     description: 'collator OFF',
     useCollator: true,
-    getSubCost,
+    getSubCost
   }));
 
   _.extend(tests, createTests('Schmid', 'Sciimid', 1, { // SCHMID/SCIIMID
     description: 'collator OFF',
     useCollator: true,
-    getSubCost,
+    getSubCost
   }));
 
   _.extend(tests, createTests('Tariq', 'Tario', 0, { // TARIQ/TARIO
     description: 'collator OFF',
     useCollator: true,
-    getSubCost,
+    getSubCost
   }));
 
    // long text
