@@ -6,6 +6,35 @@ var _ = require('lodash'),
 var expect = chai.expect,
     assert = chai.assert;
 
+var ocrZeroCostList = [
+  'b:8',
+  'o:0',
+  'i:1',
+  'y:v',
+  'j:y',
+  'i:h',
+  'q:9',
+  's:5',
+  't:7',
+  'i:w',
+  'z:2',
+  'e:f', // caps
+  'g:c',
+  'l:1',
+  'l:i',
+  'n:i',
+  'o:q',
+  'p:r',
+  'v:u',
+  'v:w',
+]
+
+var getSubCost = function(char1, char2) {
+  var key = char2 + ':' + char1;
+  var keyTransposed = char1 + ':' + char2;
+  if(ocrZeroCostList.indexOf(key) > -1 || ocrZeroCostList.indexOf(keyTransposed) > -1) return 0
+  return 1
+}
 
 /**
  * Create test functions.
@@ -93,7 +122,36 @@ var createTests = function(str1, str2, expectedLength, options) {
     description: 'collator ON'
   }));
 
-  // long text
+  _.extend(tests, createTests('apppb', 'appp8', 0, {
+    description: 'collator OFF',
+    getSubCost
+  }));
+
+  _.extend(tests, createTests('Pawel', 'Paweł', 0, {
+    description: 'collator OFF',
+    useCollator: true,
+    getSubCost
+  }));
+
+  _.extend(tests, createTests('Olamide', 'Olamide', 0, {
+    description: 'collator OFF',
+    useCollator: true,
+    getSubCost
+  }));
+
+  _.extend(tests, createTests('Schmid', 'Sciimid', 1, { // SCHMID/SCIIMID
+    description: 'collator OFF',
+    useCollator: true,
+    getSubCost
+  }));
+
+  _.extend(tests, createTests('Tariq', 'Tario', 0, { // TARIQ/TARIO
+    description: 'collator OFF',
+    useCollator: true,
+    getSubCost
+  }));
+
+   // long text
   _.extend(tests, createTests(
       'Morbi interdum ultricies neque varius condimentum. Donec volutpat turpis interdum metus ultricies vulputate. Duis ultricies rhoncus sapien, sit amet fermentum risus imperdiet vitae. Ut et lectus',
       'Duis erat dolor, cursus in tincidunt a, lobortis in odio. Cras magna sem, pharetra et iaculis quis, faucibus quis tellus. Suspendisse dapibus sapien in justo cursus',
@@ -120,7 +178,6 @@ exports['Huge'] = {
     var timeElapsed = new Date().valueOf() - startTime;
 
     console.log(timeElapsed + ' ms');
-    
     expect(distance).to.eql(194);
   },
 };
