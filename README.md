@@ -20,7 +20,7 @@ $ npm install fast-levenshtein
 ```
 **CDN**
 
-The latest version is now also always available at https://npm-cdn.com/pkg/fast-levenshtein/ 
+The latest version is now also always available at https://unpkg.com/fast-levenshtein
 
 ## Examples
 
