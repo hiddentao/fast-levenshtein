@@ -1,0 +1,3 @@
+ui: exports
+reporter: spec
+spec: test/*.js
