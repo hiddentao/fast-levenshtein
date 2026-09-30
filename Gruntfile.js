@@ -4,12 +4,12 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     mochaTest: {
-      files: ['test/*.js']
-    },
-    mochaTestConfig: {
-      options: {
-        reporter: 'spec',
-        ui: 'exports'
+      test: {
+        options: {
+          reporter: 'spec',
+          ui: 'exports'
+        },
+        src: ['test/*.js']
       }
     },
 
