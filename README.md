@@ -43,6 +43,29 @@ var levenshtein = require('fast-levenshtein');
 levenshtein.get('mikailovitch', 'Mikhaïlovitch', { useCollator: true});
 // 1
 ```
+## Unicode behavior
+
+JavaScript strings are represented as UTF-16 code units, and this affects the
+sequence processed by Levenshtein distance.
+
+The locale-sensitive comparison path in this package uses `String.length`,
+`charAt()` and `charCodeAt()`, so supplementary Unicode code points represented
+by surrogate pairs can occupy two sequence positions.
+
+The default comparison path delegates to `fastest-levenshtein`, which also
+operates on JavaScript string length and UTF-16 code units.
+
+This means the calculated distance is a UTF-16 code-unit distance rather than
+a Unicode code-point or grapheme-cluster distance. `Intl.Collator` can change
+how individual units are compared for locale-sensitive matching, but it does
+not change the underlying string segmentation model.
+
+Applications that require code-point or user-perceived-character distance
+should define and segment the comparison sequence before calculating
+Levenshtein distance.
+
+For additional background on string representations and edit-distance
+implementations, see [Levenshtein implementations and Unicode sequence units](https://www.levenshtein.net/levenshtein-implementations).
 
 ## Building and Testing
 
